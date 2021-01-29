@@ -54,29 +54,40 @@ createCard = (response) => {
     const dropMenu = document.createElement('select');
     const newP = document.createElement('p');
     
-    
     newImg.classList.add('img');
     newImg.setAttribute('width' ,'100%');
     newImg.setAttribute('src' , img) ;
     card.appendChild(newImg);
+    card.appendChild(main) ;
 
-   card.classList.add('col', 'card', 'p-3');
-   card.innerHTML += '<h2>' + response.name + '</h2>';
-   currItem.name = response.name  
-   dropMenuLabel.innerHTML = 'Choose you lense here &nbsp;&nbsp;&nbsp;';
-   form.appendChild(dropMenuLabel);
-   form.appendChild(dropMenu);
+    card.classList.add('col', 'card', 'p-3');
+    card.innerHTML += '<h2>' + response.name + '</h2>';
+    currItem.name = response.name  
+    dropMenuLabel.innerHTML = 'Choose you lense here &nbsp;&nbsp;&nbsp;';
+    form.appendChild(dropMenuLabel);
+    form.appendChild(dropMenu);
+    
+    
+   
 
    for (let x in response.lenses) {
       const option = document.createElement('option');
+     ///// console.log(option);
       option.innerHTML = response.lenses[x];
       option.setAttribute('value' , response.lenses[x])
+      ////console.log('value' , response.lenses[x]);
       dropMenu.appendChild(option);
-    };
-    
-   
-    card.appendChild(form);
+  
+     
+
+    }
+    ///card.appendChild(form);
     currItem.lenses = response.lenses[0];
+    card.appendChild(form);
+    dropMenu.addEventListener('change', changeLens );
+    
+    ///card.appendChild(form);
+
 
     card.innerHTML += '<p>' +response.description +'</p>';
     card.innerHTML += '<p>' + '$' + response.price / 100 + '</p>';
@@ -89,41 +100,42 @@ createCard = (response) => {
     newP.innerHTML += '<p>' + response + '</p>';
     products.appendChild(card);
     card.appendChild(btn);
-
+    card.appendChild(main);
                
   /////////////////   BTN Event Listener   /////////////////////
-    btn.addEventListener('click' , () => {
-
-                 alert("added");
-            
+    btn.addEventListener('click' , (ev) => {
+       
+        
+                    alert("added");
+                   
         console.log(currItem);
         if (cart.length === 0 ) {
             cart.push(currItem);
         
-        }else  { 
+        } else  { 
             for(i=0; i < cart.length; i++){
                 if (currItem.name === cart[i].name && currItem.lenses === cart[i].lenses) {
                     cart[i].qty += 1
                 } else {
-                    cart.push(currItem);
+                   cart.push(currItem);
+                   localStorage.clear();
+ 
                 } 
             }
         }
-        
         localStorage.setItem("cart" , JSON.stringify(cart));
-        cart = localStorage.getItem("cart");
+        cart = JSON.parse(localStorage.getItem("cart"));
         console.log(cart);
      
     
     });
-   
+       console.log('btn' , btn);
    ////////////// Total Cost //////////////
 
-  // function totalCost(currItem) {
-   // console.log(" The product price is", currItem.price);
-   // let cart = localStorage.getItem("totalCost");
-   // console.log("my cartCost" , cartCost);
-   // localStorage.setItem("totalCost", currItem.price);
+
+
+
+
 
    //////////// Display Item /////////////////
                
@@ -131,10 +143,13 @@ createCard = (response) => {
   
 
  
-}///////closed Respons creatCard
+}/////closed Respons creatCard////////////////
 
 
-
+    function changeLens (ev)  {
+      alert("inside");
+        console.log(ev.target);
+    };
 
    init = async () => {
         try{
