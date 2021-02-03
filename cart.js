@@ -3,7 +3,36 @@
 
 
 
-createCard = (response) => {
+function displayCart(){
+    
+    let currItem = localStorage.getItem("cart");
+    currItem = JSON.parse(currItem);
+    let productContainer = documents.querySelector(".currItem");
+     let cartCost = localStorage.getItem('totalCost');
+    console.log(currItem);
+    if( currItem && productContainer) {
+        productContainer.innerHTML = '';
+        Object.value(currItem).map(item => {
+            productContainer.innerHTML += `
+
+              <div class ="product">
+              <ion-icon name ="close-circle"></jon-icon>
+              </div>
+              <div class="price">$${currItem.price},00</div>
+              <div class="quantity">${currItem.qty}</div>
+              <div class= "total">$${cartCost},00</div>
+              
+          `
+          ;  
+        });
+          
+    }
+
+}
+displayCart();
+
+//////////////////////////////////////////////// Creat Contacts ///////////////
+createContact = (response) => {
     onsole.log(response);
     const surname = document.getElementById('surname');
     const forename = document.getElementById('forename');
@@ -147,7 +176,7 @@ createCard = (response) => {
                 const response = await resquestPromise;
 
                 displayConfirmation(response);
-                 
+                createContact(response); 
             } catch (error) {
                 document.querySelectorAll('form').innerHTML = '<h2 class = "mx-auto">' + error +'<h2>';
             }

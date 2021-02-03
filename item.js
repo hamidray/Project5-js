@@ -1,6 +1,7 @@
+ 
+ ///////////functio for API//////////////////////////////////////////
+///////////////console.log("running")////////////////////////////////
 
-    ///////////functio for API////////////////////////////////////////
-//console.log("running")
 const products = document.getElementById('products');
 let currItem = {
 
@@ -9,7 +10,7 @@ let currItem = {
     'lenses':'',
     'qty' : 1,
 }; 
-  
+
 let cartString = localStorage.getItem("cart") || '[]';
 console.log(cartString);
 let cart = JSON.parse(cartString);
@@ -39,7 +40,7 @@ makeRequest = () => {
     });
 }
 
-//================== Create Elements =========================
+//================== Create Elements ================================
 
 createCard = (response) => {
     console.log(response);
@@ -58,39 +59,35 @@ createCard = (response) => {
     newImg.setAttribute('width' ,'100%');
     newImg.setAttribute('src' , img) ;
     card.appendChild(newImg);
-    card.appendChild(main) ;
+    
 
     card.classList.add('col', 'card', 'p-3');
     card.innerHTML += '<h2>' + response.name + '</h2>';
     currItem.name = response.name  
     dropMenuLabel.innerHTML = 'Choose you lense here &nbsp;&nbsp;&nbsp;';
+    dropMenu.classList.add('drop-menu');
+    document.querySelectorAll('.drop-menu')
+    dropMenu.addEventListener('change' , changeLens);
+    function changeLens(ev) {
+        console.log(ev.target.value);
+        currItem.lenses = ev.target.value;
+    }
     form.appendChild(dropMenuLabel);
     form.appendChild(dropMenu);
-    
-    
-   
-
-   for (let x in response.lenses) {
+       
+      for (let x in response.lenses) {
       const option = document.createElement('option');
-     ///// console.log(option);
       option.innerHTML = response.lenses[x];
       option.setAttribute('value' , response.lenses[x])
-      ////console.log('value' , response.lenses[x]);
       dropMenu.appendChild(option);
-  
-     
-
     }
-    ///card.appendChild(form);
-    currItem.lenses = response.lenses[0];
-    card.appendChild(form);
-    dropMenu.addEventListener('change', changeLens );
     
-    ///card.appendChild(form);
-
-
+    currItem.lenses = response.lenses[0];
+     
+     
     card.innerHTML += '<p>' +response.description +'</p>';
     card.innerHTML += '<p>' + '$' + response.price / 100 + '</p>';
+    card.appendChild(form);
     currItem.price = response.price;
     currItem.qty = 1
 
@@ -101,56 +98,61 @@ createCard = (response) => {
     products.appendChild(card);
     card.appendChild(btn);
     card.appendChild(main);
+    
                
   /////////////////   BTN Event Listener   /////////////////////
+
     btn.addEventListener('click' , (ev) => {
-       
         
-                    alert("added");
-                   
-        console.log(currItem);
+            alert('added');
+        totalCost(currItem);          
+        console.log('currItem' , currItem);
+        let quantChange = false;
         if (cart.length === 0 ) {
             cart.push(currItem);
+            quantChange = true;
         
         } else  { 
             for(i=0; i < cart.length; i++){
                 if (currItem.name === cart[i].name && currItem.lenses === cart[i].lenses) {
                     cart[i].qty += 1
-                } else {
-                   cart.push(currItem);
-                   localStorage.clear();
- 
+                    quantChange = true;
+               
                 } 
             }
+        }
+
+        if (!quantChange) {
+            cart.push(currItem);
         }
         localStorage.setItem("cart" , JSON.stringify(cart));
         cart = JSON.parse(localStorage.getItem("cart"));
         console.log(cart);
-     
-    
+        
+        quantChange = false;
+        currItem.qty = 1;
+        
     });
-       console.log('btn' , btn);
-   ////////////// Total Cost //////////////
-
-
-
-
-
-
-   //////////// Display Item /////////////////
-               
-    
-  
-
+       
+   ///////////////////// Total Cost ///////////////////////
+   
+  function totalCost(currItem) {
+     console.log("the product price is ,product.price");
+      let cartCost = localStorage.getItem('totalCost');
+     console.log("my cartCost is" , cartCost);
+      console.log(typeof cartCost);
  
-}/////closed Respons creatCard////////////////
+      if (cartCost != null) {
+           cartCost = parseInt(cartCost);
+           localStorage.setItem("totalCost" , cartCost + currItem.price);
+       } else {
+           localStorage.setItem("totalCost", currItem.price);
+      };
+  };
+          
+ }///////////closed Respons createCard////////////////
 
-
-    function changeLens (ev)  {
-      alert("inside");
-        console.log(ev.target);
-    };
-
+   
    init = async () => {
         try{
             const requestPromise = makeRequest();
