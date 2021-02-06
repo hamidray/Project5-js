@@ -437,16 +437,16 @@ th {
   max-width: 650px;
   display: flex;
   justify-content: flex-start;
- 
+  border-bottom: 4px solid lightgray;
   margin: 0 auto;
 }
 .product-title {
-  width: 25%;
-  align-items: center;
+  width: 45%;
+  
   
 }
 
-.price {
+ .price {
   width:  15%;
  
   display: flex;
@@ -459,17 +459,18 @@ th {
   align-items: center;
 }
 
-.products{
-  width: 100%;
+.product {
+  width: 580px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-left:-35px;
-  padding: 10px;
+
+  padding: 10px 0;
 }
-.products-container ion-icon{
+
+.product ion-icon{
 font: size 25px;
 color: blue;
-margin-left: -5px;
 cursor: pointer;
+
 }

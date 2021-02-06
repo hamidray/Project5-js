@@ -11,37 +11,50 @@
         productContainer.innerHTML = '';
         Object.values(cartItems).map(item => {
             productContainer.innerHTML += `
-
               <div class ="product">
-              <ion-icon name ="close-circle"></jon-icon>
               
-              </div>
+              <ion-icon name ="close-circle"></ion-icon>
               <div class="product-title">${item.name}</div>
               <div class="lens">${item.lenses}</div>
               <div class="price">$${item.price}</div>
               
-              
+              </div>
+            
           `
-          
         });
-          
+
+        
+        
+          ////////remove item///////
+        /// ion-icon.onclick function () {
+          //localStorage.removeItem("products")
+       // }
+
         productContainer.innerHTML += `
         <div class="basketTotalContainer">
-        <h4 class="basketTotalTitle">
+        <h5 class="basketTotalTitle">
              Basket Total
-          </h4>
-          <h4 class="basketTotal">
+          </h6>
+          <h5 class="basketTotal">
             $${cartCost}
-          </h4>     
+          </h5>     
         `
     }
-
+    ///('.products ion-icon').click( function() {
+      //  localStorage.removeItem(this);
+     //  });
+    
+      
 }
 displayCart();
-
+////////remove item///////
+///delete_data.onclick=function(){
+   /// localStorage.removeItem("products")
+//}
 
 //  createContact = (response) => {
         //onsole.log(response);
+        const container = document.getElementsByClassName('container')
         const form = document.getElementsByClassName('card-p5');
         const firstname = document.getElementById('first-name');
         const lastname = document.getElementById('last-name');
@@ -123,9 +136,9 @@ displayCart();
                    address: address.value,
                    email: email.value,
                 
-               };
+               }
                         const orderObject = {
-                contact , container
+                Contact , container
             };
                   /////submitForm() Validation Bool/////
 
