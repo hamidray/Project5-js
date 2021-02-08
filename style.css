@@ -437,7 +437,7 @@ th {
   max-width: 650px;
   display: flex;
   justify-content: flex-start;
-  border-bottom: 4px solid lightgray;
+  border-bottom: 4px solid lightblue;
   margin: 0 auto;
 }
 .product-title {
@@ -464,7 +464,7 @@ th {
   display: flex;
   justify-content: space-around;
   align-items: center;
-
+  border-bottom: 2px solid lightblue;
   padding: 10px 0;
 }
 

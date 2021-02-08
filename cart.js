@@ -22,15 +22,8 @@
             
           `
         });
-
-        
-        
-          ////////remove item///////
-        /// ion-icon.onclick function () {
-          //localStorage.removeItem("products")
-       // }
-
-        productContainer.innerHTML += `
+            
+             productContainer.innerHTML += `
         <div class="basketTotalContainer">
         <h5 class="basketTotalTitle">
              Basket Total
@@ -40,29 +33,22 @@
           </h5>     
         `
     }
-    ///('.products ion-icon').click( function() {
-      //  localStorage.removeItem(this);
-     //  });
-    
-      
-}
-displayCart();
-////////remove item///////
-///delete_data.onclick=function(){
-   /// localStorage.removeItem("products")
-//}
+  }
 
-//  createContact = (response) => {
-        //onsole.log(response);
-        const container = document.getElementsByClassName('container')
+displayCart();
+
+ ///// createContact = (response) => {
+       /// console.log(response);
+       
+        const container = document.getElementsByClassName('container');
         const form = document.getElementsByClassName('card-p5');
-        const firstname = document.getElementById('first-name');
-        const lastname = document.getElementById('last-name');
+        const firstname = document.getElementById('firstname');
+        const lastname = document.getElementById('lastname');
         const email = document.getElementById('email');
         const address = document.getElementById('address');
         const submitButton =  document.getElementById('submit-button');
-        const done =document.getElementsByClassName('d-done')
-
+        const remove = document.querySelectorAll('text-danger.d-none');
+        const submitError = document.createElement('div');
         
         
         ///boolen to false/////
@@ -87,7 +73,7 @@ displayCart();
                 firstname.style.border = 'medium solid red';
             }
             else {
-                firstnameError.classList.add.remove('d-none');
+                firstnameError.classList.remove('d-none');
                 firstname.style.border = 'medium solid orang';
             }
         }); 
@@ -144,29 +130,31 @@ displayCart();
 
            if ((isFirstnameValid) && (isLastnameValid) && (isEmailValid) && (isValidAddress)) {
                 submitForm(orderObject);
+                
            }
                //if an ERROR!!!!!!///
            else {
-               document.getElementById('submitError').classList.remove('d-none');
+               
+               document.getElementsByTagName('submitError')
             }
 
-           if (surname.value === '') {
-               firstnameError.classList.remove('d-none');
+           if (firstname.value === '') {
+               firstnameError.classList.remove('text-danger');
                firstname.style.border = 'medium solid green';
             }
 
             if (lastname.value === '') {
-               lastnameError.classList.remove('d-none');
+               lastnameError.classList.remove('text-danger');
                lastname.style.border = 'medume solid green';
             }
              if (address.value === '') {
-                addressError.classList.remove('d-none');
+                addressError.classList.remove('text-danger');
               address.style.border = 'medium solid green';
             }
                
              
             if (email.value === '') {
-              emailError.classList.remove('d-none');
+              emailError.classList.remove('text-danger');
                email.style.border = 'medium solid green';
            }
             
@@ -206,7 +194,7 @@ displayCart();
                         }
                             
 
-  ///close response//////
+                      ///close response//////
 
 
 
