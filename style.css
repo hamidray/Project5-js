@@ -477,3 +477,8 @@ cursor: pointer;
 #btn{
   color: blue;
 }
+.remove {
+  color: blue;
+  padding: 2px;
+  font-size: 15px;
+}
