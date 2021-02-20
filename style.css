@@ -475,10 +475,15 @@ cursor: pointer;
 
 }
 #btn{
-  color: blue;
+  color:aqua;
+  background-color:blue;
 }
 .remove {
-  color: blue;
-  padding: 2px;
-  font-size: 15px;
+  color:aqua;
+  background-color:red;
+}
+button{
+  background-color: blue;
+  color: aqua;
+  
 }

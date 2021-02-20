@@ -104,7 +104,7 @@ createCard = (response) => {
 
     btn.addEventListener('click' , (ev) => {
         
-            alert('added');
+            alert(' !!! Your Current Item Added Successfully');
         totalCost(currItem);          
         console.log('currItem' , currItem);
         let quantChange = false;
@@ -145,6 +145,7 @@ createCard = (response) => {
       if (cartCost != null) {
            cartCost = parseInt(cartCost);
            localStorage.setItem("totalCost" , cartCost + currItem.price);
+           
        } else {
            localStorage.setItem("totalCost", currItem.price);
       };
