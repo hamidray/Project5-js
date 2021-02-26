@@ -590,5 +590,113 @@ function displayCart(){
         console.error('Error:', error);
       });
     });
+  /////////////////////////////////////// 
+    fetch('/confirm.html', Options, {
+      method: 'POST',
+     // cache: 'no-cache',
+     /// mode: 'no-cors',
+      headers: {
+          'Content-Type': 'application/json',
+     },
+      body: JSON.stringify(postRequestObj),
+     })
+     .then(response => response.json())
+      .then(response => {
+       console.log('Success:', postRequestObj);
+     })
+      .catch((error) => {
+        console.error('Error:', error);
+ });/////////End Response
+
    
+
+
+});   
+
+fetch('http://localhost:3000/api/cameras/order', {
+      
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+    },
+     body: JSON.stringify(postRequestObj)
+     })
+    .then(res => {
+     return res.json()
      
+    })
+    .then(postMessage  => 
+     console.log('Success:', postRequestObj))
+   
+    .catch((error) =>
+     console.error('Error:' , error));
+//////
+
+fetch('http://localhost:3000/api/cameras/order', {
+      
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+    },
+     body: JSON.stringify(postRequestObj)
+     })
+    .then(res => {
+     return res.json()
+     
+    })
+    .then(_postMessage  => 
+     console.log('Success:', postRequestObj))
+   
+    .catch((error) =>
+     console.error('Error:' , error));
+     ///////////////////////////////////////////////
+
+     async function postData(url = 'http://127.0.0.1:5500/confirm.html', data = { contact: {
+
+      fnmae:fname.value,
+      lastname: lastname.value,
+      address: address.value,
+      city: city.value,
+      email: email.value,
+    },
+      cartItems: cartIds, 
+     })
+    {
+     const res = await fetch('http://localhost:3000/api/cameras/order', {
+        method: 'POST', 
+       ///mode: 'no-cors', 
+        headers: {
+          'Content-Type': 'application/json'
+        
+        },
+       ///redirect: 'follow', 
+      ///  referrerPolicy: 'no-referrer', 
+        body: JSON.stringify(data) 
+      });
+      return res.json(); // parses JSON response into native JavaScript objects
+    }
+    
+    postData('http://127.0.0.1:5500/confirm.html', { answer: 42 })
+      .then(data => {
+        console.log(data); // JSON data parsed by `data.json()` call
+      });
+   /////////////////////////////
+   
+   fetch('http://localhost:3000/api/cameras', {
+      
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+    },
+     body: JSON.stringify({postRequestObj})
+          
+     })
+     
+    .catch(response=> response.body.json())
+    .catch(myJson=> console.log(myJson))
+    .then(data  => 
+     console.log('Success:', postRequestObj))
+    /// document.querySelector('#app').innerHTML =
+    // `<p> Thank you !!!Your information Successfully added </p>`
+    .catch((error) =>
+     console.error('Error:' , error)); 

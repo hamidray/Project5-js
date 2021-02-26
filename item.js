@@ -1,5 +1,5 @@
  
- ///////////functio for API//////////////////////////////////////////
+//////////functio for API//////////////////////////////////////////
 ///////////////console.log("running")////////////////////////////////
 
 const products = document.getElementById('products');
@@ -9,6 +9,7 @@ let currItem = {
     'price': 0,
     'lenses':'',
     'qty' : 1,
+    'id' : ''
 }; 
 
 let cartString = localStorage.getItem("cart") || '[]';
@@ -64,6 +65,7 @@ createCard = (response) => {
     card.classList.add('col', 'card', 'p-3');
     card.innerHTML += '<h2>' + response.name + '</h2>';
     currItem.name = response.name  
+    currItem.id = response._id
     dropMenuLabel.innerHTML = 'Choose you lense here &nbsp;&nbsp;&nbsp;';
     dropMenu.classList.add('drop-menu');
     document.querySelectorAll('.drop-menu')
@@ -167,5 +169,3 @@ createCard = (response) => {
     
      init()
        
-    
-    

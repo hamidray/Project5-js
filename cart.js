@@ -1,5 +1,5 @@
 
- /////////   Get Data From LocalStorage///////////// 
+////////   Get Data From LocalStorage///////////// 
 
 let cartItems = localStorage.getItem("cart");
 cartItems = JSON.parse(cartItems);
@@ -35,7 +35,9 @@ function displayCart(){
       const name = e.target.dataset.name
               
       /////////////// Update TotalCost///////////////////
-          
+      cartCostN = parseInt(cartCostN);
+      localStorage.setItem("totalCost" , cartCostN - item.price );
+      console.log(cartCostN - item.price);
       
       ///////////////////Remove Item/////////////////////
 
@@ -43,7 +45,7 @@ function displayCart(){
       removeItem(e,name,lens);
       return
     }
-    updateTotal();
+    
  });
           
 //////////////////////Remove Item/////////////////////////////////
@@ -65,25 +67,22 @@ function displayCart(){
     }
 
     ///////////// Function Update Total///////////////////////////
-    function updateTotal(){
-      cartCostN = parseInt(cartCostN);
-      localStorage.setItem("totalCost" , cartCostN - item.price );
-      console.log(cartCostN - item.price);
-      productContainer.innerHTML += `
-      <div class="basketTotalContainer">
-       <h5 class="basketTotalTitle">
-            Basket Total
-       </h5>
-        <h5 class="basketTotal">
-            $${cartCostN}
-        </h5>   
-      </div>   
-      ` 
+   
      
-    }    
+     
+       
 
    //////////////// Map Total Basket ///////////////////////////////   
-
+   productContainer.innerHTML += `
+   <div class="basketTotalContainer">
+    <h5 class="basketTotalTitle">
+         Basket Total
+    </h5>
+     <h5 class="basketTotal">
+         $${cartCostN}
+     </h5>   
+   </div>   
+   `
     
     };
   }
@@ -97,6 +96,7 @@ function displayCart(){
   const lastname = document.getElementById('lastname');
   const email = document.getElementById('email');  
   const address = document.getElementById('address'); 
+  const city = document.getElementById('city');
   const errorElement = document.getElementById('error');
   const form = document.getElementById('form');
    
@@ -115,6 +115,9 @@ function displayCart(){
     if(address.value === '' || address.value == null) {
         messages.push('Address is required')
     }
+    if(city.value === '' || city.value == null) {
+      messages.push('City is required')
+    }
     if(email.value === '' || email.value == null) {
       messages.push('Email is required')
     }
@@ -124,55 +127,57 @@ function displayCart(){
     }
      e.preventDefault();
 
+       // ************************************************************************
+      // ******************* stuff I added **************************************
+      // ************************************************************************
+      function getIds() {
+        let idArray = [];
+        for(let i=0; i <cartItems.length; i++) {
+          idArray.push(cartItems[i].id);
+          console.log(idArray);
+          
+        };
+        return idArray.join('')
+      };
+      
+      let cartIds = getIds();
+      
+     // ************************************************************************
+       
+     
+     // ************************************************************************
       const  postRequestObj = {
       contact: {
           fnmae:fname.value,
           lastname: lastname.value,
           address: address.value,
+          city: city.value,
           email: email.value,
        },
-       ///cartItems [
-         // 'id1' , 'id2'
-      // ]
+       cartItems: cartIds, 
+          // here is where the array of ids ends up!!!!!!!!!
+      
      }
-    ////////////////// Submit Form Data and "Fetch" send "POST" request to "Server"////////
-   
-    fetch('http://localhost:3000/api/cameras/order', {
-
-      method: 'POST',
-      cache: 'no-cache',
-      mode: 'no-cors',
-      headers: {
-          'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(postRequestObj),
-      })
-      .then(response => response.json())
-      .then(postRequestObj => {
-        console.log('Success:', postRequestObj);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-          
-  //  (async () => {
-  ///const rawResponse = await fetch('https://httpbin.org/post', {
-   // method: 'POST',
-   /// headers: {
-   //   'Accept': 'application/json',
-    //  'Content-Type': 'application/json'
-   // },
-  //  body: JSON.stringify({a: 1, b: 'Textual content'})
- // });
- // const content = await rawResponse.json();
-
-  //console.log(content);
-//})();
- });/////////End Response
-
-   
      
-                  
-
-
-   
+    ////////////////// Submit Form Data and "Fetch" send "POST" request to "Server"////////
+    fetch('http://localhost:3000/api/cameras/order', {
+      
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+    },
+     body: JSON.stringify({postRequestObj})
+          
+     })
+     
+    .catch(response=> response.body.json())
+    .catch(myJson=> console.log(myJson))
+    .then(data  => 
+     console.log('Success:', postRequestObj))
+    /// document.querySelector('#app').innerHTML =
+    // `<p> Thank you !!!Your information Successfully added </p>`
+    .catch((error) =>
+     console.error('Error:' , error)); 
+    
+         
+});  
