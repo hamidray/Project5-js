@@ -106,7 +106,9 @@ createCard = (response) => {
 
     btn.addEventListener('click' , (ev) => {
         
-            alert(' !!! Your Current Item Added Successfully');
+        document.querySelector("#app").innerHTML =
+     `<p> Thank you !!!Your Product Successfully added ${currItem.name},${currItem.lenses} </p>`
+            ////alert(' !!! Your Current Item Added Successfully');
         totalCost(currItem);          
         console.log('currItem' , currItem);
         let quantChange = false;

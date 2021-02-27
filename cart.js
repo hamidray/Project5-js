@@ -14,6 +14,7 @@ function displayCart(){
     console.log("here is" , cartCostN);
     console.log(cartItems);
     if(cartItems && productContainer) {
+      
       console.log("running")
       productContainer.innerHTML = '';
       Object.values(cartItems).map(item => {
@@ -26,18 +27,24 @@ function displayCart(){
       data-lens="${item.lenses}">Remove</button>
       </div>
       `
+               
       ////////////OnClick Remove Bottom/////////////
             
       productContainer.onclick = function(e) {
+        
       console.log("clicked List")
       console.log(e.target)
       const lens = e.target.dataset.lens
       const name = e.target.dataset.name
-              
+
+
       /////////////// Update TotalCost///////////////////
-      cartCostN = parseInt(cartCostN);
-      localStorage.setItem("totalCost" , cartCostN - item.price );
-      console.log(cartCostN - item.price);
+
+      location.reload();
+      cartCostN  = parseInt(cartCostN);
+      localStorage.setItem("totalCost" , cartCostN - item.price) ;
+      location.reload();
+      
       
       ///////////////////Remove Item/////////////////////
 
@@ -46,11 +53,13 @@ function displayCart(){
       return
     }
     
- });
-          
+   });
+       
+   
 //////////////////////Remove Item/////////////////////////////////
         
     function removeItem(e,name,lens) {
+      
       //////////////need to delete item from cart/////////
      for (let i = 0; i <cartItems.length; i++) {
         if (cartItems[i].name === name && cartItems[i].lenses === lens) {
@@ -64,6 +73,7 @@ function displayCart(){
      /////////// //get cart sync in local storage/////////////////////
      localStorage.setItem("cart" , JSON.stringify(cartItems));
      cartItems = JSON.parse(localStorage.getItem("cart"));
+     
     }
 
     ///////////// Function Update Total///////////////////////////
@@ -73,6 +83,7 @@ function displayCart(){
        
 
    //////////////// Map Total Basket ///////////////////////////////   
+  
    productContainer.innerHTML += `
    <div class="basketTotalContainer">
     <h5 class="basketTotalTitle">
@@ -83,8 +94,10 @@ function displayCart(){
      </h5>   
    </div>   
    `
-    
+  
+   
     };
+  
   }
  ////// Function display : Void///////////////////////////////////////////
 
@@ -148,7 +161,7 @@ function displayCart(){
      // ************************************************************************
       const  postRequestObj = {
       contact: {
-          fnmae:fname.value,
+          firstname:fname.value,
           lastname: lastname.value,
           address: address.value,
           city: city.value,
@@ -180,4 +193,4 @@ function displayCart(){
      console.error('Error:' , error)); 
     
          
-});  
+});
