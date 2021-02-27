@@ -76,12 +76,7 @@ function displayCart(){
      
     }
 
-    ///////////// Function Update Total///////////////////////////
-   
-     
-     
-       
-
+ 
    //////////////// Map Total Basket ///////////////////////////////   
   
    productContainer.innerHTML += `
@@ -150,24 +145,23 @@ function displayCart(){
           console.log(idArray);
           
         };
-        return idArray.join('')
+        return idArray
       };
       
       let cartIds = getIds();
-      
+      console.log(cartIds);
      // ************************************************************************
-       
-     
+                  ////Create posstOpject Request//////////////
      // ************************************************************************
       const  postRequestObj = {
       contact: {
-          firstname:fname.value,
-          lastname: lastname.value,
+          firstName:fname.value,
+          lastName: lastname.value,
           address: address.value,
           city: city.value,
           email: email.value,
        },
-       cartItems: cartIds, 
+     products: cartIds
           // here is where the array of ids ends up!!!!!!!!!
       
      }
@@ -177,20 +171,16 @@ function displayCart(){
       
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json', 
+         'Accept': 'application/json'
     },
-     body: JSON.stringify({postRequestObj})
-          
-     })
-     
-    .catch(response=> response.body.json())
-    .catch(myJson=> console.log(myJson))
-    .then(data  => 
-     console.log('Success:', postRequestObj))
-    /// document.querySelector('#app').innerHTML =
-    // `<p> Thank you !!!Your information Successfully added </p>`
-    .catch((error) =>
-     console.error('Error:' , error)); 
-    
-         
+     body: JSON.stringify(postRequestObj)
+    })
+      .then(response => response.json())
+      .then(data  => {
+      console.log(data);
+      console.log('Success:', postRequestObj);
+      window.location.href = 'confirm.html';
+    })
+     .catch((error) => console.error('Error:' , error));
 });
