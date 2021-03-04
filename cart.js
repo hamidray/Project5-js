@@ -1,5 +1,5 @@
 
-////////   Get Data From LocalStorage///////////// 
+///////   Get Data From LocalStorage///////////// 
 
 let cartItems = localStorage.getItem("cart");
 cartItems = JSON.parse(cartItems);
@@ -67,10 +67,10 @@ function displayCart(){
           cartItems.splice(i, 1);
           console.log(cartItems);
         }
-     }
-      ////////////////remove node from page////////////////////////////
+    }
+   ////////////////remove node from page////////////////////////////
      e.target.parentElement.remove();
-     /////////// //get cart sync in local storage/////////////////////
+   /////////// //get cart sync in local storage/////////////////////
      localStorage.setItem("cart" , JSON.stringify(cartItems));
      cartItems = JSON.parse(localStorage.getItem("cart"));
      
@@ -85,14 +85,11 @@ function displayCart(){
          Basket Total
     </h5>
      <h5 class="basketTotal">
-         $${cartCostN}
+         $${cartCostN / 100}
      </h5>   
    </div>   
    `
-  
-   
     };
-  
   }
  ////// Function display : Void///////////////////////////////////////////
 
@@ -160,13 +157,10 @@ function displayCart(){
           address: address.value,
           city: city.value,
           email: email.value,
-       },
+        },
      products: cartIds
-          // here is where the array of ids ends up!!!!!!!!!
-      
-     }
-     
-    ////////////////// Submit Form Data and "Fetch" send "POST" request to "Server"////////
+    }
+      ////////////////// Submit Form Data and "Fetch" send "POST" request to "Server"////////
     fetch('http://localhost:3000/api/cameras/order', {
       
       method: 'POST',
@@ -178,9 +172,13 @@ function displayCart(){
     })
       .then(response => response.json())
       .then(data  => {
-      console.log(data);
-      console.log('Success:', postRequestObj);
-      window.location.href = 'confirm.html';
+       console.log(data);
+       console.log('Success:', postRequestObj);
+       window.location.href = 'confirm.html';
+       localStorage.setItem('MyOrderId' , JSON.stringify(data));
+       
     })
-     .catch((error) => console.error('Error:' , error));
-});
+       .catch((error) => console.error('Error:' , error));
+    });
+   
+    
