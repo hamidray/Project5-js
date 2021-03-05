@@ -29,71 +29,92 @@
             <a href="index.html" class="index__link">Back</a>
            </div>
          </header>
-           
+
+           <!-----!---------Products ----------------------------->
       
-         <main class="row m-0 card">
-          <div class="table-responsive">
-            <table class="table table-striped table-hover"></table>
-              <h2 class="text-center"><ins>ITEM</ins> In Your Cart</h2>
-          <div class= "products-container">
-          <div class= "product-header">
-             <h5 class="product-title">Product:</h5>
-             <h5 class="lens">Lens:</h5>
-             <h5 class="price">Price:</h5>
-          </div>
+   <main class="row m-0 card">
+     <div class="table-responsive">
+        <table class="table table-striped table-hover"></table>
+          <h2 class="text-center"><ins>ITEM</ins> In Your Cart</h2>
+           <div class= "products-container">
+            <div class= "product-header">
+              <h5 class="product-title">Product:</h5>
+              <h5 class="lens">Lens:</h5>
+              <h5 class="price">Price:</h5>
+            </div>
               
-          <div class="products">
-                 
-          </div>
+               <div class="products">
+                
+             </div>
           </div>                
                 
-          <section id="orderSection">
-           <br><br>
-           <div id= "Tprice"></div>
-             <h2 class="text-center">Submit Order</h2>
-
+    <section id="orderSection">
+      <br><br>
+        <div id= "Tprice"></div>
            <div id="error"></div> 
-           
-         <form id="form" action="/confirm.html" method="POST">
 
-             <div class="form-row">
-             <div class="col">
+           <!-----!------------Form Elements---------------------------------->
+           <!-----!---------- Lablel , Validations---------------------------->
 
-              <label for="fname"><strong>First Name</strong></label>
-              <input id="fname" name="fname" type="text" placeholder="First Name" required >
-
-            
-              <label for="lastname"><strong>Last Name</strong></label >
-              <input id="lastname" name="lastname" type="text" placeholder="Last Name" required>
-            
-            
-              <label for="address"><strong>Address</strong></label >
-              <input id="address" name="address" type="text" placeholder="Address" required>
-
-              <label for="city"><strong>City</strong></label >
-                <input id="city" name="city" type="text" placeholder="City" required>
-  
-            
-            
-              <label for="email"><strong>Email</strong></label>
-              <input id="email" name="email" type="email" placeholder="Email" required>
-         
-              <button id="btn" type="submit"><strong>Submit</strong></button>
-
-          </form>
-
-
-
-          <footer class ="bg-light">
-            <p class="text-center p-3">Ray Ash 2020</p> 
-          </footer>
-          
-          </main>
-          </section>
-         </div>
-        </div>
+ <div class="container register-form">
+    <div class="form">
+       <div class="note">
+            <p>Submit Order</p>
        </div>
-      <script src="cart.js"></script>
-     <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
-   </body>
+   <form id="form" action="/confirm.html" method="POST">
+     <div class="form-content">
+       <div class="row">
+         <div class="col-md-6">
+           <div class="form-group">
+               <label for="fname"><strong>First Name</strong></label>
+               <input id="fname" name="fname" type="text" 
+                class="form-control" placeholder="First Name " value="" required/>
+           </div>
+            <div class="form-group">
+               <label for="lastname"><strong>Last Name</strong></label >
+               <input id="lastname" name="lastname" type="text"
+               class="form-control" placeholder="Last Name " value="" required/>
+           </div>
+           </div>
+           <div class="col-md-6">
+             <div class="form-group">
+                <label for="address"><strong>Address</strong></label >
+                <input id="address" name="address" type="text"
+                class="form-control" placeholder="Address" value="" required/>
+           </div>
+           <div class="form-group">
+                <label for="city"><strong>City</strong></label >
+                <input  id="city" name="city" type="text"
+               class="form-control" placeholder=" City" value="" required/>
+           </div>
+           </div>
+           <div class="col-md-6">
+             <div class="form-group">
+               <label for="email"><strong>Email</strong></label>
+               <input id="email" name="email" type="text" 
+               class="form-control" placeholder="Email" value="" required/>
+            </div>
+            </div>
+              </div>
+               <button id="btn" class="btnSubmit" type="submit">
+                 <strong>Submit</strong></button>
+              </div>
+            </div>
+          </div>
+       </form>
+
+    <!-----!-------------Footer---------------------------->
+
+            <footer class ="bg-light">
+              <p class="text-center p-3">Ray Ash 2020</p> 
+            </footer>     
+
+    <!-----!----------End Footrt---------------------------->         
+            
+      </main>
+     </section>
+    </div>
+           <script src="cart.js"></script>
+           <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+  </body>
  </html>

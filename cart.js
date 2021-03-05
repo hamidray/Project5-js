@@ -71,6 +71,7 @@ function displayCart(){
    ////////////////remove node from page////////////////////////////
      e.target.parentElement.remove();
    /////////// //get cart sync in local storage/////////////////////
+   
      localStorage.setItem("cart" , JSON.stringify(cartItems));
      cartItems = JSON.parse(localStorage.getItem("cart"));
      

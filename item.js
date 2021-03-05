@@ -38,7 +38,7 @@ makeRequest = () => {
         }
       }
      }
-    });
+  });
 }
 
 //================== Create Elements ================================
@@ -153,7 +153,7 @@ createCard = (response) => {
        } else {
            localStorage.setItem("totalCost", currItem.price);
       };
-  };
+    };
           
  }///////////closed Respons createCard////////////////
 

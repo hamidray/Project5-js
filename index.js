@@ -1,5 +1,5 @@
 
-///alert( 'Hello, Hamid Ray !' );
+
 
 ///console.log("running")
 makeRequest = () => {
@@ -17,7 +17,7 @@ makeRequest = () => {
         }
       }
      }
-    });
+   });
 }
 
 
