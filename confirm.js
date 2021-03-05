@@ -28,9 +28,9 @@ let cartCost = localStorage.getItem('totalCost');
 
 document.querySelector("#app4").innerHTML =
 
-`   <p>
+`   <h1>
         "THANK YOU"
-    </p>
+    </h1>
     <p>
          Your Order Has Been Placed!
     </p>
