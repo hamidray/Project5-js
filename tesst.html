@@ -806,3 +806,138 @@ fetch('http://localhost:3000/api/cameras/order', {
      <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
    </body>
  </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>eCommerce Store</title>
+   <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+   </head>
+     <body>
+        <div class="container">
+
+       <nav class = "navbar navbar-expand-lg navbar-light bg-light sticky=top">
+         <a href="index.html" class="navbar-brand">Shop</a>
+         <a href="cart.html" class="navbar-brand"> <ion-icon name= "basket"></ion-icon> Cart</a>
+       </nav>
+
+         <header class="jumbotron m-0">
+           <h1>Camera</h1>
+           <img src="https://user.oc-static.com/upload/2019/12/12/1576141243078_Orinoco%20logo.png">
+           <!--img scr "http/-->
+           <div class="index__footer">
+            <a href="index.html" class="index__link">Back</a>
+           </div>
+         </header>
+
+           <!-----!---------Products ----------------------------->
+      
+   <main class="row m-0 card">
+     <div class="table-responsive">
+        <table class="table table-striped table-hover"></table>
+          <p class="note">Your product</p>
+           <div class= "products-container">
+            <div class= "product-header">
+              <h5 class="product-title">Product:</h5>
+              <h5 class="lens">Lens:</h5>
+              <h5 class="price">Price:</h5>
+            </div>
+              
+               <div class="products">
+                
+             </div>
+          </div>                
+                
+    <section id="orderSection">
+      <br><br>
+        <div id= "Tprice"></div>
+           <div id="error"></div> 
+
+           <!-----!------------Form Elements---------------------------------->
+           <!-----!---------- Lablel , Validations---------------------------->
+
+ <div class="container register-form">
+    <div class="form">
+       <div class="note">
+            <p>Submit Order</p>
+       </div>
+   <form id="form" action="/confirm.html" method="POST">
+     <div class="form-content">
+       <div class="row">
+         <div class="col-md-6">
+           <div class="form-group">
+               <label for="fname"><strong>First Name</strong></label>
+               <input id="fname" name="fname" type="text" 
+                class="form-control" placeholder="First Name " value="" required/>
+           </div>
+            <div class="form-group">
+               <label for="lastname"><strong>Last Name</strong></label >
+               <input id="lastname" name="lastname" type="text"
+               class="form-control" placeholder="Last Name " value="" required/>
+           </div>
+           </div>
+           <div class="col-md-6">
+             <div class="form-group">
+                <label for="address"><strong>Address</strong></label >
+                <input id="address" name="address" type="text"
+                class="form-control" placeholder="Address" value="" required/>
+           </div>
+           <div class="form-group">
+                <label for="city"><strong>City</strong></label >
+                <input  id="city" name="city" type="text"
+               class="form-control" placeholder=" City" value="" required/>
+           </div>
+           </div>
+           <div class="col-md-6">
+             <div class="form-group">
+               <label for="email"><strong>Email</strong></label>
+               <input id="email" name="email" type="text" 
+               class="form-control" placeholder="Email" value="" required/>
+            </div>
+            </div>
+              </div>
+               <button id="btn" class="btnSubmit" type="submit">
+                 <strong>Submit</strong></button>
+              </div>
+            </div>
+          </div>
+       </form>
+
+    <!-----!-------------Footer---------------------------->
+
+            <footer class ="bg-light">
+              <p class="text-center p-3">Ray Ash 2020</p> 
+            </footer>     
+
+    <!-----!----------End Footrt---------------------------->         
+            
+      </main>
+     </section>
+    </div>
+           <script src="cart.js"></script>
+           <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+  </body>
+ </html>

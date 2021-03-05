@@ -142,12 +142,13 @@ createCard = (response) => {
    
   function totalCost(currItem) {
      console.log("the product price is ,product.price");
-      let cartCost = localStorage.getItem('totalCost');
-     console.log("my cartCost is" , cartCost);
-      console.log(typeof cartCost);
+      let cartCost  = localStorage.getItem('totalCost');
+     console.log("my cartCost is" , cartCost / 100);
+      console.log(typeof cartCost );
  
       if (cartCost != null) {
-           cartCost = parseInt(cartCost);
+           cartCost = parseInt(cartCost
+            );
            localStorage.setItem("totalCost" , cartCost + currItem.price);
            
        } else {

@@ -10,8 +10,9 @@ console.log(cartItems)
 function displayCart(){
     
     let productContainer = document.querySelector(".products");
-    let cartCostN = localStorage.getItem('totalCost');
-    console.log("here is" , cartCostN);
+    let cartCostN  = localStorage.getItem('totalCost');
+    
+    console.log("here is" , cartCostN /100);
     console.log(cartItems);
     if(cartItems && productContainer) {
       
@@ -71,7 +72,7 @@ function displayCart(){
    ////////////////remove node from page////////////////////////////
      e.target.parentElement.remove();
    /////////// //get cart sync in local storage/////////////////////
-   
+
      localStorage.setItem("cart" , JSON.stringify(cartItems));
      cartItems = JSON.parse(localStorage.getItem("cart"));
      
@@ -86,11 +87,12 @@ function displayCart(){
          Basket Total
     </h5>
      <h5 class="basketTotal">
-         $${cartCostN / 100}
+         $${cartCostN }
      </h5>   
    </div>   
    `
     };
+    
   }
  ////// Function display : Void///////////////////////////////////////////
 
