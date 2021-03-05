@@ -476,24 +476,24 @@ cursor: pointer;
 }
 #btn{
   color:aqua;
-  background-color:blue;
+  background-color:rgb(52, 149, 182);
 }
 .remove {
   color:aqua;
-  background-color:red;
+  background-color:rgb(236, 120, 120);
 }
 button{
-  background-color: blue;
+  background-color:gray;
   color: aqua;
   
 }
 #app{
-  color:rgb(18, 18, 122);
+  color:blue;
   text-align: center;
 }
 #app4{
-  color:rgb(252, 7, 7);
-  background-color: lightblue; 
+  color:brown;
+  background-color: lightsteelblue; 
   text-align: center;
   font-size: 30px;
   margin-top: 100px;
@@ -503,8 +503,8 @@ button{
 {
     text-align: center;
     height: 80px;
-    background: -webkit-linear-gradient(left, #0072ff, #8811c5);
-    color: #fff;
+    background: -webkit-linear-gradient(left, lightblue, rgb(119, 144, 214));
+    color:black;
     font-weight: bold;
     line-height: 80px;
 }
@@ -524,6 +524,6 @@ button{
     padding: 1%;
     width: 20%;
     cursor: pointer;
-    background: #d2e0f0;
+    background: #0062cc;
     color: #fff;
 }
