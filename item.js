@@ -90,7 +90,7 @@ createCard = (response) => {
     card.innerHTML += '<p>' +response.description +'</p>';
     card.innerHTML += '<p>' + '$' + response.price / 100 + '</p>';
     card.appendChild(form);
-    currItem.price = response.price;
+    currItem.price = response.price / 100;
     currItem.qty = 1
 
     btn.classList.add('btn','btn-secondary','w-25' , 'mx-auto');
@@ -147,8 +147,8 @@ createCard = (response) => {
       console.log(typeof cartCost );
  
       if (cartCost != null) {
-           cartCost = parseInt(cartCost
-            );
+           cartCost = parseInt(cartCost);
+            
            localStorage.setItem("totalCost" , cartCost + currItem.price);
            
        } else {

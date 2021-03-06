@@ -28,20 +28,20 @@ let cartCost = localStorage.getItem('totalCost');
 
 document.querySelector("#app4").innerHTML =
 
-`   <h1>
-        "THANK YOU"
-    </h1>
+`   <h3 class ="note">
+        "Thank You"
+    </h3>
     <p>
          Your Order Has Been Placed!
     </p>
     <p>
-         Total Basket: 
+         Total Basket : 
     </p>
     <p>
-        $${cartCost / 100}
+        $${cartCost}
     </p>
     <p>
-        Your Order Number: 
+        Your Order Number : 
     </p>
     <p>    
           ${ entries[2][1]}

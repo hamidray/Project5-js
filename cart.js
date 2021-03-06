@@ -37,14 +37,15 @@ function displayCart(){
       console.log(e.target)
       const lens = e.target.dataset.lens
       const name = e.target.dataset.name
+      
 
 
       /////////////// Update TotalCost///////////////////
-
+                                
       location.reload();
       cartCostN  = parseInt(cartCostN);
       localStorage.setItem("totalCost" , cartCostN - item.price) ;
-      location.reload();
+            location.reload();
       
       
       ///////////////////Remove Item/////////////////////
@@ -63,7 +64,7 @@ function displayCart(){
       
       //////////////need to delete item from cart/////////
      for (let i = 0; i <cartItems.length; i++) {
-        if (cartItems[i].name === name && cartItems[i].lenses === lens) {
+        if (cartItems[i].name === name && cartItems[i].lenses === lens )  {
           console.log(cartItems[i].name);
           cartItems.splice(i, 1);
           console.log(cartItems);

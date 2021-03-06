@@ -58,7 +58,7 @@
 
  <div class="container register-form">
     <div class="form">
-      <p class="note">Your Product</p>
+      <p class="note">Submit Order</p>
    <form id="form" action="/confirm.html" method="POST">
      <div class="form-content">
        <div class="row">
@@ -82,14 +82,14 @@
            </div>
            <div class="form-group">
                 <label for="city"><strong>City</strong></label >
-                <input  id="city" name="city" type="text"
+                <input  id="city" name="city"  type="city"
                class="form-control" placeholder=" City" value="" required/>
            </div>
            </div>
            <div class="col-md-6">
              <div class="form-group">
                <label for="email"><strong>Email</strong></label>
-               <input id="email" name="email" type="text" 
+               <input id="email" name="email" type="text" pattern=".+@.+\..+"
                class="form-control" placeholder="Email" value="" required/>
             </div>
             </div>
