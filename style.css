@@ -441,11 +441,16 @@ th {
   margin: 0 auto;
 }
 .product-title {
-  width: 45%;
+  width: 30%;
   
   
 }
-
+.qty{
+  width:  15%;
+ 
+  display: flex;
+  align-items: center;
+}
 .price {
   width:  15%;
  

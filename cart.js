@@ -12,7 +12,7 @@ function displayCart(){
     let productContainer = document.querySelector(".products");
     let cartCostN  = localStorage.getItem('totalCost');
     
-    console.log("here is" , cartCostN /100);
+    console.log("here is" , cartCostN );
     console.log(cartItems);
     if(cartItems && productContainer) {
       
@@ -23,6 +23,7 @@ function displayCart(){
       <div class ="product">
       <div class="product-title">${item.name}</div>
       <div class="lens">${item.lenses}</div>
+      <div class="qty">${item.qty}</div>
       <div class="price">$${item.price}</div>
       <button class="remove" data-name="${item.name}"
       data-lens="${item.lenses}">Remove</button>
@@ -42,10 +43,10 @@ function displayCart(){
 
       /////////////// Update TotalCost///////////////////
                                 
-     /// location.reload();
+  
       cartCostN  = parseInt(cartCostN);
       localStorage.setItem("totalCost" , cartCostN - item.price) ;
-    ////        location.reload();
+  
       
       
       ///////////////////Remove Item/////////////////////
