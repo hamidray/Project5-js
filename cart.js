@@ -42,10 +42,10 @@ function displayCart(){
 
       /////////////// Update TotalCost///////////////////
                                 
-      location.reload();
+     /// location.reload();
       cartCostN  = parseInt(cartCostN);
       localStorage.setItem("totalCost" , cartCostN - item.price) ;
-            location.reload();
+    ////        location.reload();
       
       
       ///////////////////Remove Item/////////////////////
@@ -58,7 +58,7 @@ function displayCart(){
    });
        
    
-//////////////////////Remove Item/////////////////////////////////
+           //////////////////////Remove Item/////////////////////////////////
         
     function removeItem(e,name,lens) {
       
@@ -76,9 +76,22 @@ function displayCart(){
 
      localStorage.setItem("cart" , JSON.stringify(cartItems));
      cartItems = JSON.parse(localStorage.getItem("cart"));
+
+     updateTotal();
      
     }
-
+     function updateTotal() {
+       const basket = document.getElementById("basketTot");
+     
+       let total = 0;
+        for (let i = 0; i <cartItems.length; i++)  {
+          total += cartItems[i].price ;
+          console.log(cartItems[i]); 
+           }
+           console.log(basket.innerHTML, total);
+        basket.innerHTML = total;  
+        localStorage.setItem('totalCost' , total); 
+     }
  
    //////////////// Map Total Basket ///////////////////////////////   
   
@@ -87,7 +100,7 @@ function displayCart(){
     <h5 class="basketTotalTitle">
          Basket Total
     </h5>
-     <h5 class="basketTotal">
+     <h5 class="basketTotal" id="basketTot">
          $${cartCostN }
      </h5>   
    </div>   
