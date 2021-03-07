@@ -108,8 +108,8 @@ createCard = (response) => {
         
         document.querySelector("#app").innerHTML =
      `<p> Thank you !!!Your Product Successfully added ${currItem.name},${currItem.lenses} </p>
-     <a href="cart.html" class="navbar-brand"> <ion-icon name= "basket"></ion-icon>Cart</a>
-     <a href="index.html" class="navbar-brand">Shop</a>
+      <a href="index.html" class="navbar-brand">Shop</a>
+      <a href="cart.html" class="navbar-brand"> <ion-icon name= "basket"></ion-icon>Cart</a>
        `     ////alert(' !!! Your Current Item Added Successfully');
         totalCost(currItem);          
         console.log('currItem' , currItem);
