@@ -39,16 +39,11 @@ function displayCart(){
       const lens = e.target.dataset.lens
       const name = e.target.dataset.name
       
-
-
-      /////////////// Update TotalCost///////////////////
-                                
-  
+      /////////////// Update TotalCost when item removed///////////////////
+                           
       cartCostN  = parseInt(cartCostN);
       localStorage.setItem("totalCost" , cartCostN - item.price) ;
-  
-      
-      
+              
       ///////////////////Remove Item/////////////////////
 
       console.log(cartItems);
@@ -81,6 +76,7 @@ function displayCart(){
      updateTotal();
      
     }
+     // update function + get item.price fron cartitems .
      function updateTotal() {
        const basket = document.getElementById("basketTot");
      
@@ -123,7 +119,7 @@ function displayCart(){
   const errorElement = document.getElementById('error');
   const form = document.getElementById('form');
    
-///////////////////////////  Form Validation  /////////////////////////////
+///////////////////////////  Form Validation function  /////////////////////////////
     
   form.addEventListener('submit', (e) => {
         
@@ -151,7 +147,7 @@ function displayCart(){
      e.preventDefault();
 
        // ************************************************************************
-      // ******************* stuff I added **************************************
+      // ** get id and creat new array and push id to new array **************************************
       // ************************************************************************
       function getIds() {
         let idArray = [];
@@ -168,6 +164,7 @@ function displayCart(){
      // ************************************************************************
                   ////Create posstOpject Request//////////////
      // ************************************************************************
+      // same shape of server requred.
       const  postRequestObj = {
       contact: {
           firstName:fname.value,
@@ -193,6 +190,7 @@ function displayCart(){
        console.log(data);
        console.log('Success:', postRequestObj);
        window.location.href = 'confirm.html';
+       ////save date to local storage
        localStorage.setItem('MyOrderId' , JSON.stringify(data));
        
     })

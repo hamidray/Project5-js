@@ -1,5 +1,5 @@
  
-//////////functio for API//////////////////////////////////////////
+/////////functio for API//////////////////////////////////////////
 ///////////////console.log("running")////////////////////////////////
 
 const products = document.getElementById('products');
@@ -21,19 +21,22 @@ console.log(cart);
    
 makeRequest = () => {
     return new Promise((resolve, reject) => {
+        //id is retreived from the querystring searchparm
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const id = urlParams.get('id');
         
        let apiRequest = new XMLHttpRequest();
+       //id is used to build the unique url for the single item page.
        apiRequest.open('GET' , 'http://Localhost:3000/api/cameras/' + id);
        apiRequest.send();
        apiRequest.onreadystatechange = () => {
         if (apiRequest.readyState === 4) { 
             if (apiRequest.status === 200) {
-
+       // if ready state and status return success codes resolve promise with response.   
          resolve(JSON.parse(apiRequest.response));
         } else{
+            //if unsuccessfull reject with error message.
             reject('Something went wrong - API resquest Faild ');
         }
       }
@@ -44,6 +47,7 @@ makeRequest = () => {
 //================== Create Elements ================================
 
 createCard = (response) => {
+    //create and query elements
     console.log(response);
     const card = document.createElement('Article');
     console.log(response.imageUrl);
@@ -55,7 +59,7 @@ createCard = (response) => {
     const dropMenuLabel = document.createElement('Label');
     const dropMenu = document.createElement('select');
     const newP = document.createElement('p');
-    
+    //setup classes and attributes and append to card
     newImg.classList.add('img');
     newImg.setAttribute('width' ,'100%');
     newImg.setAttribute('src' , img) ;
@@ -110,7 +114,8 @@ createCard = (response) => {
      `<p> Thank you !!!Your Product Successfully added ${currItem.name},${currItem.lenses} </p>
       <a href="index.html" class="navbar-brand">Shop</a>
       <a href="cart.html" class="navbar-brand"> <ion-icon name= "basket"></ion-icon>Cart</a>
-       `     ////alert(' !!! Your Current Item Added Successfully');
+       `   
+        ///// alert(' !!! Your Current Item Added Successfully');
         totalCost(currItem);          
         console.log('currItem' , currItem);
         let quantChange = false;
@@ -147,7 +152,7 @@ createCard = (response) => {
       let cartCost  = localStorage.getItem('totalCost');
      console.log("my cartCost is" , cartCost);
       console.log(typeof cartCost );
- 
+      /////if vart cost is not null////
       if (cartCost != null) {
            cartCost = parseInt(cartCost);
             
@@ -162,15 +167,17 @@ createCard = (response) => {
 
    
    init = async () => {
+        // call makeRequest for api request and await respose 
         try{
             const requestPromise = makeRequest();
             const response = await requestPromise;
+             //pass response to createCard function to display results
 
             createCard(response);
         } catch (error) {
+            //error message displayed if request fails
             document.querySelector('main').innerHTML = '<h2 class = "mx-auto">' + error + '</h2>';
         }
         }
     
      init()
-       
