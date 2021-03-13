@@ -11,7 +11,7 @@ let currItem = {
     'qty' : 1,
     'id' : ''
 }; 
-
+//get item cart if doesnt exit logical or emplt array string
 let cartString = localStorage.getItem("cart") || '[]';
 console.log(cartString);
 let cart = JSON.parse(cartString);
@@ -106,7 +106,7 @@ createCard = (response) => {
     card.appendChild(main);
     
                
-  /////////////////   BTN Event Listener   /////////////////////
+  /////////////////   BTN Event add even Listener   /////////////////////
 
     btn.addEventListener('click' , (ev) => {
         
@@ -151,14 +151,16 @@ createCard = (response) => {
      console.log("the product price is ,product.price");
       let cartCost  = localStorage.getItem('totalCost');
      console.log("my cartCost is" , cartCost);
+     ////typof we want see which kind off data is it
       console.log(typeof cartCost );
-      /////if vart cost is not null////
+      /////if cart cost is not null if the exsit////
       if (cartCost != null) {
+          //update my cart coz should convet from  string to a number
            cartCost = parseInt(cartCost);
-            
            localStorage.setItem("totalCost" , cartCost + currItem.price);
            
        } else {
+           //first time add do this :
            localStorage.setItem("totalCost", currItem.price);
       };
     };

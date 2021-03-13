@@ -17,8 +17,10 @@ function displayCart(){
     if(cartItems && productContainer) {
       
       console.log("running")
+      // firat time noting 
       productContainer.innerHTML = '';
       Object.values(cartItems).map(item => {
+      // second time add item + more not overright and create backtik for inject items inside html 
       productContainer.innerHTML += `
       <div class ="product">
       <div class="product-title">${item.name}</div>
@@ -60,6 +62,7 @@ function displayCart(){
       
       //////////////need to delete item from cart/////////
      for (let i = 0; i <cartItems.length; i++) {
+       //if the name is in list name of pass in 
         if (cartItems[i].name === name && cartItems[i].lenses === lens )  {
           console.log(cartItems[i].name);
           cartItems.splice(i, 1);
@@ -180,21 +183,25 @@ function displayCart(){
       
       method: 'POST',
       headers: {
+      // the content type header value is usually auto set - depending on the request body
         'Content-Type': 'application/json', 
          'Accept': 'application/json'
     },
      body: JSON.stringify(postRequestObj)
     })
       .then(response => response.json())
+      //Return the response as formdata object 
       .then(data  => {
        console.log(data);
        console.log('Success:', postRequestObj);
+       localStorage.clear();
        window.location.href = 'confirm.html';
-       ////save date to local storage
+       ////save data to local storage
        localStorage.setItem('MyOrderId' , JSON.stringify(data));
        
     })
        .catch((error) => console.error('Error:' , error));
+       // return with Error if catch error
     });
    
     

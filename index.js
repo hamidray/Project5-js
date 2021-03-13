@@ -1,6 +1,7 @@
 
 
 //console.log("running")
+//Ajax is the traditional way to make an asynchronous HTTP request
 makeRequest = () => {
   return new Promise((resolve, reject) => {
                  //////To make an HTTP call in Ajax, you need to initialize a new XMLHttpRequest()////
@@ -21,6 +22,7 @@ makeRequest = () => {
        ////Apart from directly making an Ajax call with JavaScript, there are other more powerful 
        ////methods of making an HTTP call such as
           if (apiRequest.status === 200) {
+            // if apiresquest is OK
               resolve(JSON.parse(apiRequest.response));
            }       
       else{
@@ -34,7 +36,7 @@ makeRequest = () => {
 
 createCard = (response) => {
   const main = document.querySelector ('main');
-  for( let i in response) {
+    for( let i in response) {
       /////creat elements for the card
   const card = document.createElement('Article');
   const img = response[i].imageUrl;
